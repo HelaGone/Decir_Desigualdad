@@ -22,7 +22,9 @@ export default class Header extends Component{
 						<div className="bar2"></div>
 						<div className="bar3"></div>
 					</div>
-					<div className="logo_nofm"></div>
+					<Link to="/">
+						<div className="logo_nofm"></div>
+					</Link>
 				</header>
 				<nav id="main_navigation" >
 					<h3><Link to="/episodios">Episodios</Link></h3>
