@@ -1,26 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
+import './Reset.css';
 import './App.css';
+import Header from './parts/Header';
+import Footer from './parts/Footer';
+import Home from './components/Home';
+import Episodios from './components/Episodios';
+import {Switch, Route} from 'react-router-dom';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      episodios: []
+    }
+  }
+
+  componentDidMount(){
+    const rest_url = 'http://localhost/~cube/nofm-radio.com/wp-json/react/v2/desigualdad/';
+    this.getQueryedObject(rest_url);
+  };
+
+  getQueryedObject = (url)=>{
+    fetch(url)
+    .then(response=>response.json())
+    .then(data=>{
+      this.setState({
+        episodios: data
+      });
+      return data;
+    })
+    .catch(err=>console.error(err));
+  }
+
   render() {
+    const {episodios} = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Fragment>
+        <Header/>
+        <Switch>
+        	<Route path="/" exact render={(props)=><Home episodios={episodios} {...props}/>} />
+        	<Route path="/episodios" exact component={Episodios} />
+        </Switch>
+        {<Footer episodios={episodios}/>}
+      </Fragment>
     );
   }
 }
