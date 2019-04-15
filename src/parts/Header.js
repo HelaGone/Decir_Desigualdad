@@ -13,10 +13,22 @@ export default class Header extends Component{
 		const btnMenu = event.target.parentNode;
 		btnMenu.classList.toggle('change');
 	}
+
+	handleHeaderClass=()=>{
+		if(document.getElementById('main_header')!=null){
+			if(window.location.pathname !== '/'){
+				document.getElementById('main_header').classList.add('with_background');
+			}else{
+				document.getElementById('main_header').classList.remove('with_background');
+			}
+		}
+	}
+
 	render(){
+		this.handleHeaderClass();
 		return(
 			<Fragment>
-				<header id="main_header" className="visual">
+				<header id="main_header" className="visual" >
 					<div id="menu_hamburguer" onClick={this.handleMenuClick}>
 						<div className="bar1"></div>
 						<div className="bar2"></div>

@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter as MyRouter} from 'react-router-dom';
+import {BrowserRouter as NoFmRouter} from 'react-router-dom';
 
-ReactDOM.render(<MyRouter><App /></MyRouter>, document.getElementById('root'));
+ReactDOM.render(<NoFmRouter><App /></NoFmRouter>, document.getElementById('root'));

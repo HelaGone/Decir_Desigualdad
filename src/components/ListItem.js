@@ -9,14 +9,13 @@ import PlayButton from '../parts/PlayButton';
 */
 const ListItem = (props)=>{
 	const {post} = props;
-	const {r_name, r_thumbnails, r_excerpt} = post;
+	const {r_id, r_name, r_thumbnails, r_excerpt, r_slug} = post;
 	const {square_small} = r_thumbnails;
-	console.log(post);
 	return(
 			<li className="audio_item">
 				<figure className="fig_audio_item">
 					<img src={square_small} alt="Hola" />
-					<Link to="/single">
+					<Link to={`/episodio/${r_slug}`}>
 						<figcaption className="fig_audio_caption">
 							<PlayButton />
 							<h4 className="fig_audio_title">

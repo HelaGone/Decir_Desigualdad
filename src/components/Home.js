@@ -13,7 +13,7 @@ export default class Home extends Component{
 				{
 					safeRender && 
 					<Fragment>
-						{<FirstPost  first_post={episodios[0]} />}
+						<FirstPost  first_post={episodios[0]} />
 						<Playlist episodios={episodios} />
 					</Fragment>
 				}

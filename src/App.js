@@ -5,6 +5,9 @@ import Header from './parts/Header';
 import Footer from './parts/Footer';
 import Home from './components/Home';
 import Episodios from './components/Episodios';
+import Single from './components/Single';
+import NotFound from './components/NotFound';
+
 import {Switch, Route} from 'react-router-dom';
 
 class App extends Component {
@@ -38,8 +41,10 @@ class App extends Component {
       <Fragment>
         <Header/>
         <Switch>
-        	<Route path="/" exact render={(props)=><Home episodios={episodios} {...props}/>} />
-        	<Route path="/episodios" exact component={Episodios} />
+        	<Route path="/" exact render={(props)=><Home episodios={episodios} {...props} />}/>
+        	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} {...props} />}/>
+          <Route path="/episodio/:episodio_slug" render={(props)=><Single episodios={episodios} {...props} />} />
+          <Route component={NotFound} />
         </Switch>
         {<Footer episodios={episodios}/>}
       </Fragment>
