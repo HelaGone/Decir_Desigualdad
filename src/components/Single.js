@@ -6,7 +6,6 @@ export default class Single extends Component{
 		const {methods} = this.props;
 		const path_name = window.location.pathname;
 		methods.handleMenuClose(path_name);
-		console.log(path_name);
 	}
 
 	render(){

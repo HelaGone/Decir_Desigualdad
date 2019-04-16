@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import './Reset.css';
 import './App.css';
-import Header from './parts/Header';
-import Footer from './parts/Footer';
-import Home from './components/Home';
+import Acerca from './components/Acerca';
+import Contacto from './components/Contacto';
 import Episodios from './components/Episodios';
-import Single from './components/Single';
+import Escuchanos from './components/Escuchanos';
+import Footer from './parts/Footer';
+import Header from './parts/Header';
+import Home from './components/Home';
 import NotFound from './components/NotFound';
+import Single from './components/Single';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -62,23 +65,25 @@ class App extends Component {
         currentPathName: pathName,
         isOpen: false
       });
-      console.log(this.state.currentPathName);
+      console.log(pathName);
     }
   }
 
   render() {
     console.log('render');
-    const {episodios, isOpen, methods, currentPathName} = this.state;
+    const {episodios, isOpen, methods} = this.state;
     const {handleMenuClick} = methods;
-    // console.log(currentPathName);
     return (
       <Fragment>
         <Header isOpen={isOpen} handleMenuClick={handleMenuClick} />
         <Switch>
         	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} {...props} />}/>
+          <Route path="/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
+          <Route path="/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
         	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} {...props} />}/>
           <Route path="/episodio/:episodio_slug" render={(props)=><Single episodios={episodios} methods={methods} {...props} />} />
-          <Route component={NotFound} />
+          <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
+          <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>
         {<Footer episodios={episodios}/>}
       </Fragment>
