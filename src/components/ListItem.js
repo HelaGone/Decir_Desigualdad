@@ -9,7 +9,7 @@ import PlayButton from '../parts/PlayButton';
 */
 const ListItem = (props)=>{
 	const {post} = props;
-	const {r_id, r_name, r_thumbnails, r_excerpt, r_slug} = post;
+	const {r_name, r_thumbnails, r_excerpt, r_slug} = post;
 	const {square_small} = r_thumbnails;
 	return(
 			<li className="audio_item">

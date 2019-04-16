@@ -1,6 +1,14 @@
 import React, {Component, Fragment} from 'react';
 import PlayButton from '../parts/PlayButton';
 export default class Single extends Component{
+	componentDidMount(){
+		console.log('single mount');
+		const {methods} = this.props;
+		const path_name = window.location.pathname;
+		methods.handleMenuClose(path_name);
+		console.log(path_name);
+	}
+
 	render(){
 		const {episodios} = this.props;
 		const {episodio_slug} = this.props.match.params;
@@ -8,7 +16,7 @@ export default class Single extends Component{
 		let safe_render = false;
 		if(episodio.length>0){
 			safe_render = true;
-			console.log(episodio);
+			// console.log(episodio);
 		}
 		// console.log(this.props);
 		return(
