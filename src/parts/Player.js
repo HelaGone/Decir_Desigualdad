@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 
@@ -10,9 +10,9 @@ export default class Player extends Component {
       return episodio.r_meta._episodio_url
     });
     return (
-      <Fragment>
+      <div id="player_container">
         <ReactAudioPlayer src={ep_urls[1]} autoplay controls/>
-      </Fragment>
+      </div>
     );
   }
 }

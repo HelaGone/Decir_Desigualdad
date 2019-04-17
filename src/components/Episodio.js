@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 
 const Episodio = (props)=>{
 	const {episodio} = props;
+	window.scrollTo(0,0);
 	return(
 		<figure className="fig_container">
 			<img src={episodio.r_thumbnails.medium} alt={episodio.r_name} />

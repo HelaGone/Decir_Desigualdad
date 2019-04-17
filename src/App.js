@@ -21,7 +21,8 @@ class App extends Component {
       isOpen: false,
       methods: {
         handleMenuClick: this.handleMenuClick,
-        handleMenuClose: this.handleMenuClose
+        handleMenuClose: this.handleMenuClose,
+        playButton: this.playButton
       },
       currentPathName: window.location.pathname
     }
@@ -65,8 +66,12 @@ class App extends Component {
         currentPathName: pathName,
         isOpen: false
       });
-      console.log(pathName);
     }
+  }
+
+  playButton = (song)=>{
+    // console.log(song);
+    console.log('click');
   }
 
   render() {

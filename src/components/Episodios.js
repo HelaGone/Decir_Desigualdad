@@ -7,6 +7,8 @@ class Episodios extends Component{
 		const {methods} = this.props
 		// console.log(methods);
 		methods.handleMenuClose(window.location.pathname);
+
+		window.scrollTo(0,0);
 	}
 
 	render(){

@@ -4,6 +4,7 @@ class Contacto extends Component{
 		const {methods} = this.props;
 		const path_name = window.location.pathname;
 		methods.handleMenuClose(path_name);
+		window.scrollTo(0,0);
 	}
 
 	render(){

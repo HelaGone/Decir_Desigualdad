@@ -2,26 +2,24 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PlayButton from '../parts/PlayButton';
 const FirtsPost = (props)=>{
-	const {first_post} = props;
-	const {r_name, r_thumbnails, r_excerpt} = first_post;
+	const {first_post, playbtn} = props;
+	const {r_name, r_thumbnails, r_excerpt, r_slug} = first_post;
 	const {square_small} = r_thumbnails;
 	return(
 		<section id="first_post_section">
 			<figure className="fig_container first_post">
-				{<img src={square_small} alt={r_name} />}
+				<img src={square_small} alt={r_name} />
 				<figcaption className="fig_caption">
-					<PlayButton />
-					{<h2 className="fig_title">{r_name}</h2>}
+					<PlayButton click={playbtn} song={first_post.r_id} />
+					<h2 className="fig_title">{r_name}</h2>
 				</figcaption>
 			</figure>
 
 			<div className="post_detail">
 				<h6>Decir Desigualdad, presentado por NoFm Radio</h6>
 				<p className="excerpt">{r_excerpt}</p>
-				<Link to="/single">Pagina del episodio</Link>
-				<h5>Relacionado</h5>
-				<Link to="/single">¿Cómo hicimos este proyecto?</Link>
-				<Link to="/single">Acerca del episodio</Link>
+				<Link to={`/episodio/${r_slug}`}>Acerca de este episodio</Link>
+				<Link to="/acerca/">¿Cómo hicimos este proyecto?</Link>
 
 				<ul className="options_list">
 					<li className="options_item">
