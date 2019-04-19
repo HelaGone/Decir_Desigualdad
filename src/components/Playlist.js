@@ -3,7 +3,7 @@ import ListItem from './ListItem';
 
 export default class Playlist extends Component{
 	render(){
-		const {episodios, playbtn} = this.props;
+		const {episodios, methods} = this.props;
 		return(
 			<Fragment>
 				<div className="playlist_header">
@@ -13,7 +13,7 @@ export default class Playlist extends Component{
 					{
 						episodios.map(episodio=>{
 							return (
-								<ListItem key={episodio.r_id} post={episodio} playbtn={playbtn}/>
+								<ListItem key={episodio.r_id} post={episodio} methods={methods} />
 							)
 						})
 					}

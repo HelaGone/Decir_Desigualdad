@@ -24,7 +24,8 @@ class App extends Component {
         handleMenuClose: this.handleMenuClose,
         playButton: this.playButton
       },
-      currentPathName: window.location.pathname
+      currentPathName: window.location.pathname,
+      playThisEpisode: []
     }
   }
 
@@ -37,7 +38,20 @@ class App extends Component {
     if(this.state.currentPathName !== prevState.currentPathName){
       console.log('update');
     }
-  }
+
+    if(this.state.playThisEpisode !== prevState.playThisEpisode){
+      let episode = this.state.playThisEpisode[0];
+
+      console.log(this.player);
+      const {r_meta} = episode;
+
+      if(r_meta._episodio_url!==''){
+        this.player.src = r_meta._episodio_url;
+        this.player.play();
+      }
+    }
+
+  }//Did update
 
   getQueryedObject = (url)=>{
     fetch(url)
@@ -70,13 +84,21 @@ class App extends Component {
   }
 
   playButton = (song)=>{
-    // console.log(song);
-    console.log('click');
+    const {episodios} = this.state;
+    const play_this_episode = episodios.filter(episodio=>{
+      if(episodio.r_id === song){
+        return episodio;
+      }
+      return null;
+    });
+    this.setState({
+      playThisEpisode: play_this_episode
+    });
   }
 
   render() {
     console.log('render');
-    const {episodios, isOpen, methods} = this.state;
+    const {episodios, isOpen, methods, playThisEpisode} = this.state;
     const {handleMenuClick} = methods;
     return (
       <Fragment>
@@ -90,7 +112,8 @@ class App extends Component {
           <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
           <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>
-        {<Footer episodios={episodios}/>}
+        <Footer episodios={episodios} playthis={playThisEpisode} />
+        <audio ref={ref=>this.player = ref} />
       </Fragment>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PlayButton from '../parts/PlayButton';
 const FirtsPost = (props)=>{
-	const {first_post, playbtn} = props;
+	const {first_post, methods} = props;
 	const {r_name, r_thumbnails, r_excerpt, r_slug} = first_post;
 	const {square_small} = r_thumbnails;
 	return(
@@ -10,7 +10,7 @@ const FirtsPost = (props)=>{
 			<figure className="fig_container first_post">
 				<img src={square_small} alt={r_name} />
 				<figcaption className="fig_caption">
-					<PlayButton click={playbtn} song={first_post.r_id} />
+					<PlayButton methods={methods} song={first_post.r_id} />
 					<h2 className="fig_title">{r_name}</h2>
 				</figcaption>
 			</figure>

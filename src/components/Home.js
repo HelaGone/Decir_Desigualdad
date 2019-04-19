@@ -15,15 +15,14 @@ export default class Home extends Component{
 
 	render(){
 		const {episodios, methods} = this.props;
-		const {playButton} = methods;
 		const safeRender = (episodios.length>0) ? true : false;		
 		return(
 			<section id="home_section">
 				{
 					safeRender && 
 					<Fragment>
-						<FirstPost  first_post={episodios[0]} playbtn={playButton}/>
-						<Playlist episodios={episodios} playbtn={playButton} />
+						<FirstPost first_post={episodios[0]} methods={methods} />
+						<Playlist episodios={episodios} methods={methods} />
 					</Fragment>
 				}
 			</section>
