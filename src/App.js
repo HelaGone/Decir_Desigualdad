@@ -25,7 +25,8 @@ class App extends Component {
         playButton: this.playButton
       },
       currentPathName: window.location.pathname,
-      playThisEpisode: []
+      playThisEpisode: [],
+      playerStatus: "stopped"
     }
   }
 
@@ -41,13 +42,13 @@ class App extends Component {
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
       let episode = this.state.playThisEpisode[0];
-
-      console.log(this.player);
       const {r_meta} = episode;
-
       if(r_meta._episodio_url!==''){
         this.player.src = r_meta._episodio_url;
         this.player.play();
+        this.setState({
+          playerStatus: "playing"
+        })
       }
     }
 
