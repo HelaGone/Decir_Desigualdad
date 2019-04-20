@@ -37,11 +37,10 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.state.currentPathName !== prevState.currentPathName){
-      console.log('update');
-    }
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
+      console.log('update');
+      console.log(this.state.playThisEpisode);
       //asigan el episodio del estado a la variable episode
       let episode = this.state.playThisEpisode[0];
       const {r_meta} = episode;
@@ -67,8 +66,8 @@ class App extends Component {
             });
           }
 
-        }else{
-          // console.log(this.state.playerStatus);
+        }else if(this.player.src === r_meta._episodio_url){
+          console.log("same audio source");
           if(this.state.playerStatus === "playing"){
             this.player.pause();
             //Actualiza el estado de la propiedad playerStatus
@@ -83,9 +82,16 @@ class App extends Component {
             });
           }
 
+        }else if(this.player.src !== r_meta._episodio_url){
+          console.log("different audio source");
+          this.player.pause();
+          //asigna un track diferente al player
+          this.player.src = r_meta._episodio_url;
+          this.player.load();
+          this.player.play();
         }
 
-      }
+      }//_episodio_url != ''
 
     }//player status
 
