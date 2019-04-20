@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 export default class Player extends Component {
   render() {
-  	const {playthis, playerStatus, methods} = this.props;
-    console.log(playerStatus);
+    //playthis, 
+  	const {playerStatus, methods} = this.props;
     return (
       <div id="player_control_container">
         {

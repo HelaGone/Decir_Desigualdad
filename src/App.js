@@ -42,26 +42,62 @@ class App extends Component {
     }
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
+      //asigan el episodio del estado a la variable episode
       let episode = this.state.playThisEpisode[0];
       const {r_meta} = episode;
+      //comprueba que la propiedad _episodio_url no está vacía
       if(r_meta._episodio_url!==''){
-        this.player.src = r_meta._episodio_url;
-        this.player.play();
-        this.setState({
-          playerStatus: "playing"
-        })
+        if(this.player.src === ''){
+          //asigna el valor de la propiedad _episodio_url al atributo src del audio tag
+          this.player.src = r_meta._episodio_url;
+          // console.log(this.state.playerStatus);
+          if(this.state.playerStatus === "paused"){
+            //Comienza la reprodicción
+            this.player.play();
+            //Actializa el estado de la propiedad playerStatus
+            this.setState({
+              playerStatus: "playing"
+            });
+          }else if(this.state.playerStatus === "playing"){
+            //Comienza la reprodicción
+            this.player.pause();
+            //Actializa el estado de la propiedad playerStatus
+            this.setState({
+              playerStatus: "paused"
+            });
+          }
+
+        }else{
+          // console.log(this.state.playerStatus);
+          if(this.state.playerStatus === "playing"){
+            this.player.pause();
+            //Actualiza el estado de la propiedad playerStatus
+            this.setState({
+              playerStatus: "paused"
+            });
+          }else if(this.state.playerStatus === "paused"){
+            this.player.play();
+            //Actualiza el estado de la propiedad playerStatus
+            this.setState({
+              playerStatus: "playing"
+            });
+          }
+
+        }
+
       }
+
     }//player status
 
-    if(this.state.playerStatus !== prevState.playerStatus){
-      if(this.state.playerStatus === "paused"){
-        console.log('pause');
-        this.player.pause();
-      }else if(this.state.playerStatus === "playing" && prevState.playerStatus === "paused" ){
-        console.log('play');
-        this.player.play();
-      }
-    }
+    // if(this.state.playerStatus !== prevState.playerStatus){
+    //   if(this.state.playerStatus === "paused"){
+    //     console.log('pause');
+    //     this.player.pause();
+    //   }else if(this.state.playerStatus === "playing" && prevState.playerStatus === "paused" ){
+    //     console.log('play');
+    //     this.player.play();
+    //   }
+    // }
 
   }//Did update
 
@@ -83,7 +119,6 @@ class App extends Component {
       isOpen: !this.state.isOpen
     });
   }
-
   handleMenuClose = (pathName)=>{
     // console.log(pathName);
     const {currentPathName} = this.state;
@@ -95,6 +130,7 @@ class App extends Component {
     }
   }
 
+  /*PLAYER*/
   playButton = (song, state)=>{
     const {episodios} = this.state;
     const play_this_episode = episodios.filter(episodio=>{
@@ -103,10 +139,12 @@ class App extends Component {
       }
       return null;
     });
+
     this.setState({
-      playThisEpisode: play_this_episode,
-      playerStatus: state
+      playThisEpisode: play_this_episode
     });
+
+    // console.log(play_this_episode);
   }// End playButton 
 
   handlePlayerStatus = (state)=>{
