@@ -8,7 +8,7 @@ import PlayButton from '../parts/PlayButton';
  * @return <li> html tag
 */
 const ListItem = (props)=>{
-	const {post, methods} = props;
+	const {post, methods, playerStatus, playThisEpisode} = props;
 	const {r_name, r_thumbnails, r_excerpt, r_slug} = post;
 	const {square_small} = r_thumbnails;
 	return(
@@ -17,7 +17,7 @@ const ListItem = (props)=>{
 					<img src={square_small} alt="Hola" />
 					<Link to={`/episodio/${r_slug}`}>
 						<figcaption className="fig_audio_caption">
-							<PlayButton song={post.r_id} methods={methods}/>
+							<PlayButton song={post.r_id} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
 							<h4 className="fig_audio_title">
 									{r_name}
 							</h4>

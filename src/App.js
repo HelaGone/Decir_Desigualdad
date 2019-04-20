@@ -40,7 +40,8 @@ class App extends Component {
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
       console.log('update');
-      console.log(this.state.playThisEpisode);
+      console.log('-----Current track-----');
+      console.log(`${this.state.playThisEpisode[0].r_id}`);
       //asigan el episodio del estado a la variable episode
       let episode = this.state.playThisEpisode[0];
       const {r_meta} = episode;
@@ -50,17 +51,19 @@ class App extends Component {
           //asigna el valor de la propiedad _episodio_url al atributo src del audio tag
           this.player.src = r_meta._episodio_url;
           // console.log(this.state.playerStatus);
-          if(this.state.playerStatus === "paused"){
+          if(this.state.playerStatus === "paused" && this.state.playThisEpisode !== prevState.playThisEpisode){
+
             //Comienza la reprodicción
             this.player.play();
-            //Actializa el estado de la propiedad playerStatus
+            //Actualiza el estado de la propiedad playerStatus
             this.setState({
               playerStatus: "playing"
             });
+
           }else if(this.state.playerStatus === "playing"){
             //Comienza la reprodicción
             this.player.pause();
-            //Actializa el estado de la propiedad playerStatus
+            //Actualiza el estado de la propiedad playerStatus
             this.setState({
               playerStatus: "paused"
             });
@@ -68,6 +71,7 @@ class App extends Component {
 
         }else if(this.player.src === r_meta._episodio_url){
           console.log("same audio source");
+
           if(this.state.playerStatus === "playing"){
             this.player.pause();
             //Actualiza el estado de la propiedad playerStatus
@@ -92,7 +96,7 @@ class App extends Component {
         }
 
       }//_episodio_url != ''
-
+      console.log('---end update---');
     }//player status
 
     // if(this.state.playerStatus !== prevState.playerStatus){
@@ -169,11 +173,11 @@ class App extends Component {
       <Fragment>
         <Header isOpen={isOpen} handleMenuClick={handleMenuClick} />
         <Switch>
-        	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} playerStatus={playerStatus} {...props} />}/>
+        	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
           <Route path="/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
           <Route path="/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
-        	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} {...props} />}/>
-          <Route path="/episodio/:episodio_slug" render={(props)=><Single episodios={episodios} methods={methods} {...props} />} />
+        	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
+          <Route path="/episodio/:episodio_slug" render={(props)=><Single episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />} />
           <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
           <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>

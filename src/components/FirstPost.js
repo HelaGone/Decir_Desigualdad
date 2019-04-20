@@ -2,16 +2,17 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PlayButton from '../parts/PlayButton';
 const FirtsPost = (props)=>{
-	const {first_post, methods, playerStatus} = props;
+	const {first_post, methods, playerStatus, playThisEpisode} = props;
 	const {r_name, r_thumbnails, r_excerpt, r_slug} = first_post;
 	const {square_small} = r_thumbnails;
+
 	return(
 		<section id="first_post_section">
 			<figure className="fig_container first_post">
 				<img src={square_small} alt={r_name} />
 				<figcaption className="fig_caption">
 
-					<PlayButton methods={methods} song={first_post.r_id} playerStatus={playerStatus} />
+					<PlayButton methods={methods} song={first_post.r_id} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
 
 					<h2 className="fig_title">{r_name}</h2>
 				</figcaption>

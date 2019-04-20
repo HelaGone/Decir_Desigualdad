@@ -10,7 +10,7 @@ export default class Single extends Component{
 	}
 
 	render(){
-		const {episodios, methods} = this.props;
+		const {episodios, methods, playerStatus, playThisEpisode} = this.props;
 		const {episodio_slug} = this.props.match.params;
 		const episodio = episodios.filter(episodio=>episodio.r_slug === episodio_slug);
 		let safe_render = false;
@@ -26,7 +26,7 @@ export default class Single extends Component{
 								<img className="single_article_image" src={episodio[0].r_thumbnails.square_small} alt={episodio[0].r_name}/>
 								<div className="single_article_caption">
 									<div className="play_section">
-										<PlayButton methods={methods} song={episodio[0].r_id} />
+										<PlayButton methods={methods} song={episodio[0].r_id} playerStatus={playerStatus} playThisEpisode={playThisEpisode} />
 										<span>Escucha el episodio completo</span>
 									</div>
 									<h3 className="single_article_title">{episodio[0].r_name}</h3>

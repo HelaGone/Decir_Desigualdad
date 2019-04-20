@@ -3,7 +3,8 @@ import ListItem from './ListItem';
 
 export default class Playlist extends Component{
 	render(){
-		const {episodios, methods} = this.props;
+		const {episodios, methods, playerStatus, playThisEpisode} = this.props;
+		console.log(playThisEpisode);
 		return(
 			<Fragment>
 				<div className="playlist_header">
@@ -13,7 +14,7 @@ export default class Playlist extends Component{
 					{
 						episodios.map(episodio=>{
 							return (
-								<ListItem key={episodio.r_id} post={episodio} methods={methods} />
+								<ListItem key={episodio.r_id} post={episodio} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} />
 							)
 						})
 					}
