@@ -22,11 +22,12 @@ class App extends Component {
       methods: {
         handleMenuClick: this.handleMenuClick,
         handleMenuClose: this.handleMenuClose,
+        handlePlayerStatus: this.handlePlayerStatus,
         playButton: this.playButton
       },
       currentPathName: window.location.pathname,
       playThisEpisode: [],
-      playerStatus: "stopped"
+      playerStatus: "paused"
     }
   }
 
@@ -49,6 +50,16 @@ class App extends Component {
         this.setState({
           playerStatus: "playing"
         })
+      }
+    }//player status
+
+    if(this.state.playerStatus !== prevState.playerStatus){
+      if(this.state.playerStatus === "paused"){
+        console.log('pause');
+        this.player.pause();
+      }else if(this.state.playerStatus === "playing" && prevState.playerStatus === "paused" ){
+        console.log('play');
+        this.player.play();
       }
     }
 
@@ -84,7 +95,7 @@ class App extends Component {
     }
   }
 
-  playButton = (song)=>{
+  playButton = (song, state)=>{
     const {episodios} = this.state;
     const play_this_episode = episodios.filter(episodio=>{
       if(episodio.r_id === song){
@@ -93,19 +104,28 @@ class App extends Component {
       return null;
     });
     this.setState({
-      playThisEpisode: play_this_episode
+      playThisEpisode: play_this_episode,
+      playerStatus: state
     });
+  }// End playButton 
+
+  handlePlayerStatus = (state)=>{
+    if(this.state.playerStatus !== state){
+      this.setState({
+        playerStatus: state
+      })
+    }
   }
 
   render() {
     console.log('render');
-    const {episodios, isOpen, methods, playThisEpisode} = this.state;
+    const {episodios, isOpen, methods, playThisEpisode, playerStatus} = this.state;
     const {handleMenuClick} = methods;
     return (
       <Fragment>
         <Header isOpen={isOpen} handleMenuClick={handleMenuClick} />
         <Switch>
-        	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} {...props} />}/>
+        	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} playerStatus={playerStatus} {...props} />}/>
           <Route path="/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
           <Route path="/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
         	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} {...props} />}/>
@@ -113,7 +133,7 @@ class App extends Component {
           <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
           <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>
-        <Footer episodios={episodios} playthis={playThisEpisode} />
+        <Footer episodios={episodios} playthis={playThisEpisode} playerStatus={playerStatus} methods={methods} />
         <audio ref={ref=>this.player = ref} />
       </Fragment>
     );
