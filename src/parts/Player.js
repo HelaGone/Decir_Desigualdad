@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 export default class Player extends Component {
   render() {
   	const {playerStatus, methods, playthis} = this.props;
-    console.log(playthis);
+    // console.log(playthis);
     let song_ready = false;
     if(playthis.length!==0){
       song_ready = true;

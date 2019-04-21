@@ -94,7 +94,7 @@ class App extends Component {
           this.player.play();
         }
       }//_episodio_url != ''
-      console.log('---end update---');
+      // console.log('---end update---');
     }//player status
   }//Did update
 

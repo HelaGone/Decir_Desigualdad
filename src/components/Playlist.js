@@ -1,10 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import ListItem from './ListItem';
-
 export default class Playlist extends Component{
 	render(){
 		const {episodios, methods, playerStatus, playThisEpisode} = this.props;
-		console.log(playThisEpisode);
 		return(
 			<Fragment>
 				<div className="playlist_header">
