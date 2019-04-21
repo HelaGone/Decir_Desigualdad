@@ -22,12 +22,12 @@ class App extends Component {
       methods: {
         handleMenuClick: this.handleMenuClick,
         handleMenuClose: this.handleMenuClose,
-        handlePlayerStatus: this.handlePlayerStatus,
         playButton: this.playButton
       },
       currentPathName: window.location.pathname,
       playThisEpisode: [],
-      playerStatus: "paused"
+      playerStatus: "paused",
+      showPlayer: false
     }
   }
 
@@ -39,9 +39,9 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
-      console.log('update');
-      console.log('-----Current track-----');
-      console.log(`${this.state.playThisEpisode[0].r_id}`);
+      // console.log('update');
+      // console.log('-----Current track-----');
+      // console.log(`${this.state.playThisEpisode[0].r_id}`);
       //asigan el episodio del estado a la variable episode
       let episode = this.state.playThisEpisode[0];
       const {r_meta} = episode;
@@ -57,7 +57,8 @@ class App extends Component {
             this.player.play();
             //Actualiza el estado de la propiedad playerStatus
             this.setState({
-              playerStatus: "playing"
+              playerStatus: "playing",
+              showPlayer: true
             });
 
           }else if(this.state.playerStatus === "playing"){
@@ -70,8 +71,7 @@ class App extends Component {
           }
 
         }else if(this.player.src === r_meta._episodio_url){
-          console.log("same audio source");
-
+          // console.log("same audio source");
           if(this.state.playerStatus === "playing"){
             this.player.pause();
             //Actualiza el estado de la propiedad playerStatus
@@ -85,30 +85,17 @@ class App extends Component {
               playerStatus: "playing"
             });
           }
-
         }else if(this.player.src !== r_meta._episodio_url){
-          console.log("different audio source");
+          // console.log("different audio source");
           this.player.pause();
           //asigna un track diferente al player
           this.player.src = r_meta._episodio_url;
           this.player.load();
           this.player.play();
         }
-
       }//_episodio_url != ''
       console.log('---end update---');
     }//player status
-
-    // if(this.state.playerStatus !== prevState.playerStatus){
-    //   if(this.state.playerStatus === "paused"){
-    //     console.log('pause');
-    //     this.player.pause();
-    //   }else if(this.state.playerStatus === "playing" && prevState.playerStatus === "paused" ){
-    //     console.log('play');
-    //     this.player.play();
-    //   }
-    // }
-
   }//Did update
 
   getQueryedObject = (url)=>{
@@ -154,20 +141,11 @@ class App extends Component {
       playThisEpisode: play_this_episode
     });
 
-    // console.log(play_this_episode);
-  }// End playButton 
-
-  handlePlayerStatus = (state)=>{
-    if(this.state.playerStatus !== state){
-      this.setState({
-        playerStatus: state
-      })
-    }
-  }
+  }// End playButton
 
   render() {
     console.log('render');
-    const {episodios, isOpen, methods, playThisEpisode, playerStatus} = this.state;
+    const {episodios, isOpen, methods, playThisEpisode, playerStatus, showPlayer} = this.state;
     const {handleMenuClick} = methods;
     return (
       <Fragment>
@@ -181,7 +159,7 @@ class App extends Component {
           <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
           <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>
-        <Footer episodios={episodios} playthis={playThisEpisode} playerStatus={playerStatus} methods={methods} />
+        <Footer episodios={episodios} playthis={playThisEpisode} playerStatus={playerStatus} methods={methods} showPlayer={showPlayer} />
         <audio ref={ref=>this.player = ref} />
       </Fragment>
     );

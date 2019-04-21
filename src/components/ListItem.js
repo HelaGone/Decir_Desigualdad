@@ -15,15 +15,13 @@ const ListItem = (props)=>{
 			<li className="audio_item">
 				<figure className="fig_audio_item">
 					<img src={square_small} alt="Hola" />
-					<Link to={`/episodio/${r_slug}`}>
-						<figcaption className="fig_audio_caption">
-							<PlayButton song={post.r_id} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
-							<h4 className="fig_audio_title">
-									{r_name}
-							</h4>
-							<p>{r_excerpt}</p>
-						</figcaption>
-					</Link>
+					<PlayButton song={post.r_id} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
+					<figcaption className="fig_audio_caption">
+						<Link to={`/episodio/${r_slug}`}>
+							<h4 className="fig_audio_title">{r_name}</h4>
+						</Link>
+						<p>{r_excerpt}</p>
+					</figcaption>
 				</figure>
 			</li>
 	);

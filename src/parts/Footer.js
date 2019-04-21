@@ -3,10 +3,12 @@ import Player from './Player';
 
 export default class Footer extends Component{
 	render(){
-		const {playthis, playerStatus, methods}=this.props;
+		const {playthis, playerStatus, methods, showPlayer}=this.props;
 		return(
 			<footer id="main_footer">
-				<Player playthis={playthis} playerStatus={playerStatus} methods={methods}/>
+				{
+					showPlayer && <Player playthis={playthis} playerStatus={playerStatus} methods={methods}/>
+				}
 			</footer>
 		);
 	}

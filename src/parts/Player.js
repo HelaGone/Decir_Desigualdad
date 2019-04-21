@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 export default class Player extends Component {
   render() {
   	const {playerStatus, methods, playthis} = this.props;
+    console.log(playthis);
+    let song_ready = false;
+    if(playthis.length!==0){
+      song_ready = true;
+    }
     return (
-      <div id="player_control_container">
+      <div id="player_control_container" className="player_main_container">
         {
           playerStatus === "paused" && (
             <button 
@@ -32,6 +37,13 @@ export default class Player extends Component {
             </button>
           )
         }
+        <div className="track_info">
+          {
+            song_ready && (
+              <h5>{playthis[0].r_name}</h5>
+            )
+          }
+        </div>
       </div>
     );
   }
