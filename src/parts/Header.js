@@ -4,20 +4,15 @@ import Menu from './Menu';
 
 export default class Header extends Component{
 
-	// handleHeaderClass=()=>{
-	// 	if(document.getElementById('main_header')!=null){
-	// 		if(window.location.pathname !== '/'){
-	// 			document.getElementById('main_header').classList.add('with_background');
-	// 		}else{
-	// 			document.getElementById('main_header').classList.remove('with_background');
-	// 		}
-	// 	}
-	// }
 	componentDidMount(){
+		//Mount component
+	}
+
+	componentWillUnmount(){
+		//Unmount component
 	}
 
 	render(){
-		// this.handleHeaderClass();
 		const {isOpen, handleMenuClick} = this.props;
 		return(
 			<Fragment>
