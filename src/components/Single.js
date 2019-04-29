@@ -41,7 +41,7 @@ export default class Single extends Component{
 									{episodio[0].r_content}
 								</div>
 								
-								<div className="share_container">
+								<div className="share_container section_wrapper">
 									<FacebookShareButton url={path_name} quote={episodio[0].r_name} className="share_button">
 										<FacebookIcon size={32} round={true} />
 									</FacebookShareButton>

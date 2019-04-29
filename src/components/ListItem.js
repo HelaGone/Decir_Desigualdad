@@ -20,7 +20,7 @@ const ListItem = (props)=>{
 						<Link to={`/episodio/${r_slug}`}>
 							<h4 className="fig_audio_title">{r_name}</h4>
 						</Link>
-						<p>{r_excerpt}</p>
+						<p className="excerpt">{r_excerpt}</p>
 					</figcaption>
 				</figure>
 			</li>
