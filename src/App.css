@@ -50,10 +50,11 @@ body{font-family:'Encode Sans', sans-serif;}
 #first_post_section .post_detail span{color:#fff;display: block;}
 #first_post_section .post_detail a{color:#fff;display: block;margin-bottom: 24px;}
 #first_post_section .options_list .options_item a{margin-bottom: 0;}
-
-#first_post_section .post_detail h6, #first_post_section .post_detail p{margin:0 0 24px 0;}
-
+#first_post_section .post_detail figure{border-bottom:2px solid white;margin-bottom:16px;}
+#first_post_section .post_detail img{width:100%;height: auto;}
+#first_post_section .post_detail p{margin:0 0 24px 0;}
 #first_post_section .post_detail h5{margin-bottom:16px;}
+#first_post_section .post_detail h6{text-align: center;line-height: 24px;}
 
 /*PLAYLIST*/
 .playlist_header{padding:50px 16px 24px 16px;}

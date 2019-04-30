@@ -6,24 +6,12 @@ import {
 	TwitterShareButton, TwitterIcon, 
 	WhatsappShareButton, WhatsappIcon,
 	} from 'react-share';
+import foncaLogo from '../images/cultura_fonca_blanco.png';
 
 const FirtsPost = (props)=>{
 	const {first_post, methods, playerStatus, playThisEpisode} = props;
 	const {r_name, r_thumbnails, r_excerpt, r_slug} = first_post;
 	const {square_small} = r_thumbnails;
-
-	/*const shareBtn = ()=>{
-		const openshare = document.querySelector('.option_share');
-		if(openshare!=null){
-			openshare.addEventListener('click', ()=>{
-				const share_box = document.querySelector('.share_container');
-				if(share_box!=null){
-					console.log('click');
-					share_box.style.visibility = "visible";
-				}
-			});
-		}
-	}*/
 	const path_name = `${window.location.pathname}/${r_slug}`
 
 	return(
@@ -39,7 +27,12 @@ const FirtsPost = (props)=>{
 			</figure>
 
 			<div className="post_detail">
-				<h6>Decir Desigualdad, presentado por NoFm Radio</h6>
+				<figure>
+					<figcaption>
+						<h6>"Proyecto apoyado por<br/> el Fondo Nacional para la Cultura y las Artes"</h6>
+					</figcaption>
+					<img src={foncaLogo} alt="Logotipo FONCA"/>
+				</figure>
 				<p className="excerpt">{r_excerpt}</p>
 				<Link to={`/episodio/${r_slug}`}>Acerca de este episodio</Link>
 				<Link to="/acerca/">¿Cómo hicimos este proyecto?</Link>
