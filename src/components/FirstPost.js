@@ -29,13 +29,13 @@ const FirtsPost = (props)=>{
 			<div className="post_detail">
 				<figure>
 					<figcaption>
-						<h6>"Proyecto apoyado por<br/> el Fondo Nacional para la Cultura y las Artes"</h6>
+						<h5>"Proyecto apoyado por el Fondo Nacional para la Cultura y las Artes"</h5>
 					</figcaption>
 					<img src={foncaLogo} alt="Logotipo FONCA"/>
 				</figure>
 				<p className="excerpt">{r_excerpt}</p>
 				<Link to={`/episodio/${r_slug}`}>Acerca de este episodio</Link>
-				<Link to="/acerca/">¿Cómo hicimos este proyecto?</Link>
+				<Link to="/proyecto/">¿Cómo hicimos este proyecto?</Link>
 
 				<ul className="options_list">
 					{/*<li className="options_item">
