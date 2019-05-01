@@ -1,23 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PlayButton from '../parts/PlayButton';
-import { 
-	FacebookIcon, FacebookShareButton, 
-	TwitterShareButton, TwitterIcon, 
-	WhatsappShareButton, WhatsappIcon,
-	} from 'react-share';
+import { FacebookIcon, FacebookShareButton, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon,} from 'react-share';
+import {isMobile} from 'react-device-detect';
 import foncaLogo from '../images/cultura_fonca_blanco.png';
 
 const FirtsPost = (props)=>{
 	const {first_post, methods, playerStatus, playThisEpisode} = props;
 	const {r_name, r_thumbnails, r_excerpt, r_slug} = first_post;
-	const {square_small} = r_thumbnails;
+	const {square_small, large} = r_thumbnails;
 	const path_name = `${window.location.pathname}/${r_slug}`
+
+	// console.log( first_post );
 
 	return(
 		<section id="first_post_section">
 			<figure className="fig_container first_post">
-				<img src={square_small} alt={r_name} />
+				<img src={ (isMobile) ? square_small : large } alt={r_name} />
 				<figcaption className="fig_caption">
 
 					<PlayButton methods={methods} song={first_post.r_id} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />

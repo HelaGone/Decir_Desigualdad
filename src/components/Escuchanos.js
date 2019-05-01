@@ -9,7 +9,7 @@ class Escuchanos extends Component{
 
 	render(){
 		return(
-			<section className="section_wrapper" className="section_wrapper">
+			<section className="section_wrapper">
 				<h2>Escúchanos</h2>
 			</section>
 		);

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PlayButton from '../parts/PlayButton';
+import {isMobileOnly, isTablet} from 'react-device-detect';
 /**
  * This component takes one Object in the prop
  * called post wihch is a Wordpress post object
@@ -10,11 +11,21 @@ import PlayButton from '../parts/PlayButton';
 const ListItem = (props)=>{
 	const {post, methods, playerStatus, playThisEpisode} = props;
 	const {r_name, r_thumbnails, r_excerpt, r_slug} = post;
-	const {square_small} = r_thumbnails;
+	const {square_small, large, square_mid} = r_thumbnails;
+	let image_src = '';
+
+	if(isMobileOnly){
+		image_src = square_small;
+	}else if(isTablet){
+		image_src = square_mid;
+	}else{
+		image_src = square_mid;
+	}
+	
 	return(
 			<li className="audio_item">
 				<figure className="fig_audio_item">
-					<img src={square_small} alt="Hola" />
+					<img src={image_src} alt="Hola" />
 					<PlayButton song={post.r_id} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
 					<figcaption className="fig_audio_caption">
 						<Link to={`/episodio/${r_slug}`}>

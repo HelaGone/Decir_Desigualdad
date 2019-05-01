@@ -10,7 +10,7 @@ import Header from './parts/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Single from './components/Single';
-import Proyecto from './components/Proyecto';
+//import Proyecto from './components/Proyecto';
 
 import {Switch, Route} from 'react-router-dom';
 

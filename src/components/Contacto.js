@@ -11,7 +11,7 @@ class Contacto extends Component{
 		return(
 			<section className="section_wrapper">
 				<h2>Contacto</h2>
-				<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe_PxR6yk8kno5MKXeKdUc72jdI7AJqDy6jJhv51MmofR3jtQ/viewform?embedded=true" width="100%" height="1015" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+				<iframe title="Form" src="https://docs.google.com/forms/d/e/1FAIpQLSe_PxR6yk8kno5MKXeKdUc72jdI7AJqDy6jJhv51MmofR3jtQ/viewform?embedded=true" width="100%" height="1015" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
 			</section>
 		);
 	}
