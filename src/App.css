@@ -95,8 +95,15 @@ h1, h2, h3, h4, h5, h6{font-family: 'Lora';}
 #player_control_container{display: flex;flex-direction: row;justify-content:flex-start;align-items: center;}
 
 @media screen and (min-width: 768px){
-	#home_section .playlist{display: flex;flex-direction: row;flex-wrap: wrap;justify-content: space-between;}
-	#home_section .playlist li{flex-shrink: 1;width:calc(100% / 3);}
+	/*HOME PLAYLIST*/
+	#home_section .playlist{
+		display:grid;
+		grid-template-columns:1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		grid-gap: 16px 16px;
+		align-items:center;
+	}
+
 	#first_post_section .post_detail{max-width:80%;margin:0 auto;font-size: 140%;}
 	#first_post_section .post_detail p{line-height: 40px;}
 	#first_post_section .post_detail figure{display: flex;flex-direction: row;justify-content: space-between;align-items: center;}
@@ -113,15 +120,35 @@ h1, h2, h3, h4, h5, h6{font-family: 'Lora';}
 
 }
 
+@media screen and (min-width: 1024px){
+	/*HOME PLAYLIST*/
+	#home_section .playlist{
+		display:grid;
+		grid-template-columns:1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-gap: 16px 16px;
+		align-items:center;
+	}
+}
+
 @media screen and (min-width: 1280px){
-	#first_post_section .fig_container.first_post img{height: 100vh;}
+	/*HOME PLAYLIST*/
+	#home_section .playlist{
+		display:grid;
+		grid-template-columns:1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr;
+		grid-gap: 16px 16px;
+		align-items:center;
+	}
+
+	#first_post_section .fig_container.first_post img{height: 90vh;}
 	#first_post_section .fig_container.first_post figcaption{padding:16px 16px 40px 16px;}	
 	#first_post_section .post_detail p{font-size: 150%;line-height: 50px;}
 	#first_post_section .post_detail a{font-size: 120%;}
 	.playlist_header h4{font-size: 200%;}
 	h6{font-size: 150%;}
 
-	#home_section .playlist li{width: auto;margin-bottom:12px;width:calc(100% / 4);}
+	/*#home_section .playlist li{width: auto;margin-bottom:12px;width:calc(100% / 4);}*/
 
 	/*Episodios*/
 	#episodios_section ul .audio_item{width: calc(100% / 4);}

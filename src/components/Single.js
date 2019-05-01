@@ -1,11 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import PlayButton from '../parts/PlayButton';
-import { 
-	FacebookIcon, FacebookShareButton, 
-	TwitterShareButton, TwitterIcon, 
-	WhatsappShareButton, WhatsappIcon,
-	} from 'react-share';
+import { FacebookIcon, FacebookShareButton, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon,} from 'react-share';
+import {isMobileOnly, isTablet} from 'react-device-detect';
 export default class Single extends Component{
+
 	componentDidMount(){
 		console.log('single mount');
 		const {methods} = this.props;
@@ -20,8 +18,17 @@ export default class Single extends Component{
 		const episodio = episodios.filter(episodio=>episodio.r_slug === episodio_slug);
 		let safe_render = false;
 		const path_name = `${window.location.pathname}/${episodio_slug}`
+		let image_src = '';
 		if(episodio.length>0){
 			safe_render = true;
+
+			if(isMobileOnly){
+				image_src = episodio[0].r_thumbnails.square_small
+			}else if(isTablet){
+				image_src = episodio[0].r_thumbnails.square_mid
+			}else{
+				image_src = episodio[0].r_thumbnails.large
+			}
 		}
 		return(
 			<Fragment>
@@ -29,7 +36,7 @@ export default class Single extends Component{
 					{
 						safe_render && 
 							<article className="single_article_container">
-								<img className="single_article_image" src={episodio[0].r_thumbnails.square_small} alt={episodio[0].r_name}/>
+								<img className="single_article_image" src={image_src} alt={episodio[0].r_name}/>
 								<div className="single_article_caption section_wrapper">
 									<div className="play_section">
 										<PlayButton methods={methods} song={episodio[0].r_id} playerStatus={playerStatus} playThisEpisode={playThisEpisode} />
