@@ -10,7 +10,7 @@ import Header from './parts/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Single from './components/Single';
-//import Proyecto from './components/Proyecto';
+import Proyecto from './components/Proyecto';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -154,7 +154,7 @@ class App extends Component {
         <Switch>
         	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
           <Route path="/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
-        {/*<Route path="/proyecto/" render={(props)=><Proyecto methods={methods} {...props} />}/>*/}
+        {<Route path="/proyecto/" render={(props)=><Proyecto methods={methods} {...props} />}/>}
           <Route path="/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
         	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
           <Route path="/episodio/:episodio_slug" render={(props)=><Single episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />} />
