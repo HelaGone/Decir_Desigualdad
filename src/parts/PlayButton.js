@@ -18,7 +18,7 @@ export default class PlayButton extends Component{
 			render_pause = false;
 			render_play = true;
 		}
-
+		//console.log(song);
 		return(
 			<Fragment>
 				{

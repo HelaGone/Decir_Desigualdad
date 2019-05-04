@@ -11,6 +11,7 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Single from './components/Single';
 import Proyecto from './components/Proyecto';
+import Glosario from './components/Glosario';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -19,6 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       episodios: [],
+      glosario: [],
       isOpen: false,
       methods: {
         handleMenuClick: this.handleMenuClick,
@@ -35,14 +37,17 @@ class App extends Component {
   componentDidMount(){
     const rest_url = 'http://localhost/~cube/nofm-radio.com/wp-json/react/v2/desigualdad/';
     this.getQueryedObject(rest_url);
+
+    const rest_glosario = "http://localhost/~cube/nofm-radio.com/wp-json/react/v2/glosario/";
+    this.getGlosarioObject(rest_glosario);
   };
 
   componentDidUpdate(prevProps, prevState) {
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
-      // console.log('update');
-      // console.log('-----Current track-----');
-      // console.log(`${this.state.playThisEpisode[0].r_id}`);
+      console.log('update');
+      console.log('-----Current track-----');
+      console.log(`${this.state.playThisEpisode[0].r_id}`);
       //asigan el episodio del estado a la variable episode
       let episode = this.state.playThisEpisode[0];
       const {r_meta} = episode;
@@ -111,12 +116,26 @@ class App extends Component {
     .catch(err=>console.error(err));
   }
 
+  getGlosarioObject = (url)=>{
+    fetch(url)
+    .then(response=>response.json())
+    .then(data=>{
+      this.setState({
+        glosario: data
+      });
+      return data;
+    })
+    .catch(err=>console.error(err)); 
+  }
+
   /*MENU*/
   handleMenuClick = (event)=>{
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+  
+  /*HANDLE MENU CLOSE*/
   handleMenuClose = (pathName)=>{
     // console.log(pathName);
     const {currentPathName} = this.state;
@@ -130,8 +149,9 @@ class App extends Component {
 
   /*PLAYER*/
   playButton = (song, state)=>{
-    const {episodios} = this.state;
-    const play_this_episode = episodios.filter(episodio=>{
+    const {episodios, glosario} = this.state;
+    const arr_mix = [...episodios, ...glosario];
+    const play_this_episode = arr_mix.filter(episodio=>{
       if(episodio.r_id === song){
         return episodio;
       }
@@ -142,23 +162,27 @@ class App extends Component {
       playThisEpisode: play_this_episode
     });
 
+
+
   }// End playButton
 
   render() {
     console.log('render');
-    const {episodios, isOpen, methods, playThisEpisode, playerStatus, showPlayer} = this.state;
+    const {episodios, glosario, isOpen, methods, playThisEpisode, playerStatus, showPlayer} = this.state;
     const {handleMenuClick} = methods;
     return (
       <Fragment>
         <Header isOpen={isOpen} handleMenuClick={handleMenuClick} />
         <Switch>
-        	<Route path="/" exact render={(props)=><Home episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
+        	<Route path="/" exact render={(props)=><Home episodios={episodios} glosario={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
           <Route path="/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
-        {<Route path="/proyecto/" render={(props)=><Proyecto methods={methods} {...props} />}/>}
+          <Route path="/proyecto/" render={(props)=><Proyecto methods={methods} {...props} />}/>
           <Route path="/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
-        	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
-          <Route path="/episodio/:episodio_slug" render={(props)=><Single episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />} />
+        	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} type="episodio" {...props} />}/>
+          <Route path="/episodio/:slug" render={(props)=><Single episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />} />
           <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
+          <Route path="/glosarios/" render={(props)=><Glosario glosario={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} type="glosario" {...props} />}/>
+          <Route path="/glosario/:slug" render={(props)=><Single episodios={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
           <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>
         <Footer episodios={episodios} playthis={playThisEpisode} playerStatus={playerStatus} methods={methods} showPlayer={showPlayer} />

@@ -13,12 +13,21 @@ export default class Single extends Component{
 	}
 
 	render(){
-		const {episodios, methods, playerStatus, playThisEpisode} = this.props;
-		const {episodio_slug} = this.props.match.params;
-		const episodio = episodios.filter(episodio=>episodio.r_slug === episodio_slug);
+		const {episodios, glosario, methods, playerStatus, playThisEpisode} = this.props;
+		const {slug} = this.props.match.params;
+		console.log(this.props);
+		const episodio = episodios.filter(episodio=>{
+			console.log(`${episodio} - ${slug}`);
+			return episodio.r_slug === slug
+		});
+		// console.log(episodio);
 		let safe_render = false;
-		const path_name = `${window.location.pathname}/${episodio_slug}`
+		const path_name = `${window.location.pathname}/${slug}`
 		let image_src = '';
+
+		// console.log(episodios);
+		// console.log(episodio);
+
 		if(episodio.length>0){
 			safe_render = true;
 

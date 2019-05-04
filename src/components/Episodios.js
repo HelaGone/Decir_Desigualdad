@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import ListItem from './ListItem';
+import Playlist from './Playlist';
 
 class Episodios extends Component{
 	componentDidMount(){
@@ -9,18 +9,14 @@ class Episodios extends Component{
 	}
 
 	render(){
-		const {episodios, playThisEpisode, methods, playerStatus} = this.props;
+		const {episodios, type, playThisEpisode, methods, playerStatus} = this.props;
 		return(
 			<Fragment>
 				<section id="episodios_section" className="section_wrapper_two">
 					<div className="playlist_header">
 						<h4>EPISODIOS</h4>
 					</div>
-					<ul>
-						{
-							episodios.map(episodio=><ListItem key={episodio.r_id} post={episodio} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} />)
-						}
-					</ul>
+					<Playlist episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type={type} />
 				</section>
 			</Fragment>
 		);

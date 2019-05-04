@@ -12,6 +12,9 @@ export default class Menu extends Component{
 			<Fragment>
 				<nav id="main_navigation" className={(isOpen) ? 'show' : ''}>
 					<h3><Link to="/episodios">EPISODIOS</Link></h3>
+					<h3>
+						<Link to="/glosarios">Glosario</Link>
+					</h3>
 					<ul className="nav_ilst">
 						<li className="nav_item">
 							<h4><Link to="/acerca">Decir Desigualdad</Link></h4>
