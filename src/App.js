@@ -161,9 +161,6 @@ class App extends Component {
     this.setState({
       playThisEpisode: play_this_episode
     });
-
-
-
   }// End playButton
 
   render() {
