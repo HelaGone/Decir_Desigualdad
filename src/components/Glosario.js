@@ -12,9 +12,6 @@ export default class Glosario extends Component{
 		const {glosario, type, methods, playerStatus, playThisEpisode} = this.props;
 		return(
 			<section id="glosario_section" className="section_wrapper_two">
-				<div className="playlist_header">
-					<h4>GLOSARIO</h4>
-				</div>
 				<Playlist episodios={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type={type}/>
 			</section>
 		);

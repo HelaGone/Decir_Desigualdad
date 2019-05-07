@@ -13,6 +13,10 @@ import Single from './components/Single';
 import Proyecto from './components/Proyecto';
 import Glosario from './components/Glosario';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faRss } from '@fortawesome/free-solid-svg-icons';
+
 import {Switch, Route} from 'react-router-dom';
 
 class App extends Component {
@@ -167,6 +171,7 @@ class App extends Component {
     console.log('render');
     const {episodios, glosario, isOpen, methods, playThisEpisode, playerStatus, showPlayer} = this.state;
     const {handleMenuClick} = methods;
+    library.add(fab, faRss);
     return (
       <Fragment>
         <Header isOpen={isOpen} handleMenuClick={handleMenuClick} />

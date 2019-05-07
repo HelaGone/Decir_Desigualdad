@@ -24,18 +24,14 @@ const ListItem = (props)=>{
 	return(
 			<li className="audio_item">
 				<figure className="fig_audio_item">
-					<img src={image_src} alt="Hola" />
-					<PlayButton 
-						song={post.r_id} 
-						methods={methods} 
-						playerStatus={playerStatus} 
-						playThisEpisode={ playThisEpisode } 
-						/>
+					<Link to={`/${type}/${r_slug}`}>
+						<img src={image_src} alt="Hola" />
+					</Link>
 					<figcaption className="fig_audio_caption">
+						<PlayButton song={post.r_id} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
 						<Link to={`/${type}/${r_slug}`}>
 							<h4 className="fig_audio_title">{r_name}</h4>
 						</Link>
-						<p className="excerpt">{r_excerpt}</p>
 					</figcaption>
 				</figure>
 			</li>

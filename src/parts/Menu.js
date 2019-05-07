@@ -1,9 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom';
-import facebook from '../images/f-ogo_RGB_HEX-58.svg';
-import instagram from '../images/instagram_color.png';
-import twitter from '../images/Twitter_Logo_Blue.svg';
-import feedburner from '../images/rss_feed.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Menu extends Component{
 	render(){
@@ -11,10 +8,10 @@ export default class Menu extends Component{
 		return(
 			<Fragment>
 				<nav id="main_navigation" className={(isOpen) ? 'show' : ''}>
-					<h3><Link to="/episodios">EPISODIOS</Link></h3>
-					<h3>
+					<h4><Link to="/episodios">Episodios</Link></h4>
+					<h4>
 						<Link to="/glosarios">Glosario</Link>
-					</h3>
+					</h4>
 					<ul className="nav_ilst">
 						<li className="nav_item">
 							<h4><Link to="/acerca">Decir Desigualdad</Link></h4>
@@ -28,22 +25,23 @@ export default class Menu extends Component{
 							<ul className="social_list">
 								<li className="social_item">
 									<Link to="https://www.facebook.com/todomenosmiedo/">
-										<img src={facebook} alt="facebook" />
-									</Link>
-								</li>
-								<li className="social_item">
-									<Link to="https://www.instagram.com/nofm_radio/">
-										<img src={instagram} alt="instagram"/>
+										
+										<FontAwesomeIcon icon={['fab', 'facebook']} size="lg" />
 									</Link>
 								</li>
 								<li className="social_item">
 									<Link to="https://twitter.com/nofm_radio">
-										<img src={twitter} alt="twitter" />
+										<FontAwesomeIcon icon={['fab', 'twitter']} size="lg"/>
+									</Link>
+								</li>
+								<li className="social_item">
+									<Link to="https://www.instagram.com/nofm_radio/">
+										<FontAwesomeIcon icon={['fab', 'instagram']} size="lg"/>
 									</Link>
 								</li>
 								<li className="social_item">
 									<Link to="http://feeds.feedburner.com/nofm-radio/HgNX">
-										<img src={feedburner} alt="feedburner" />
+										<FontAwesomeIcon icon="rss" size="lg"/>
 									</Link>
 								</li>
 							</ul>

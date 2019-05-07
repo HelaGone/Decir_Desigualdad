@@ -15,7 +15,7 @@ export default class Home extends Component{
 		const {episodios, glosario, methods, playerStatus, playThisEpisode} = this.props;
 		const safeRender = ( (episodios.length>0&&glosario.length>0) ) ? true : false;
 		return(
-			<section id="home_section">
+			<section id="home_section" className="section_wrapper_two blue_bg">
 				{
 					safeRender && 
 					<Fragment>

@@ -13,9 +13,6 @@ class Episodios extends Component{
 		return(
 			<Fragment>
 				<section id="episodios_section" className="section_wrapper_two">
-					<div className="playlist_header">
-						<h4>EPISODIOS</h4>
-					</div>
 					<Playlist episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type={type} />
 				</section>
 			</Fragment>
