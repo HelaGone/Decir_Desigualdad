@@ -9,6 +9,12 @@ export default class Footer extends Component{
 				{
 					showPlayer && <Player playthis={playthis} playerStatus={playerStatus} methods={methods}/>
 				}
+				<figure>
+						<img src="" alt="" />
+					<figcaption>
+						<p>ESTE SITIO NO TIENE FINES DE LUCRO CON LA REPRODUCCIÓN O EXPLOTACIÓN	DE LOS FONOGRAMAS. NO OFRECE NINGÚN TIPO DE DESCARGA GRATUITA NI BAJO NINGÚN TIPO DE COBRO.</p>
+					</figcaption>
+				</figure>
 			</footer>
 		);
 	}
