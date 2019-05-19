@@ -39,10 +39,10 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const rest_url = 'http://localhost/~cube/nofm-radio.com/wp-json/react/v2/desigualdad/';
+    const rest_url = 'http://localhost/~rizika/nofm-radio.com/wp-json/react/v2/desigualdad/';
     this.getQueryedObject(rest_url);
 
-    const rest_glosario = "http://localhost/~cube/nofm-radio.com/wp-json/react/v2/glosario/";
+    const rest_glosario = "http://localhost/~rizika/nofm-radio.com/wp-json/react/v2/glosario/";
     this.getGlosarioObject(rest_glosario);
   };
 

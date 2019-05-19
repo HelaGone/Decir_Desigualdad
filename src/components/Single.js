@@ -13,7 +13,7 @@ export default class Single extends Component{
 	}
 
 	render(){
-		const {episodios, glosario, methods, playerStatus, playThisEpisode} = this.props;
+		const {episodios, methods, playerStatus, playThisEpisode} = this.props;
 		const {slug} = this.props.match.params;
 		console.log(this.props);
 		const episodio = episodios.filter(episodio=>{

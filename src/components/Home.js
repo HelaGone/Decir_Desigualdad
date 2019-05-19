@@ -13,15 +13,21 @@ export default class Home extends Component{
 
 	render(){
 		const {episodios, glosario, methods, playerStatus, playThisEpisode} = this.props;
-		const safeRender = ( (episodios.length>0&&glosario.length>0) ) ? true : false;
+		const safeRender = ( (episodios.length>0||glosario.length>0) ) ? true : false;
+		const episodioSafeRender = (episodios.length>0) ? true : false;
+		const glosarioSafeRender = (glosario.length>0) ? true : false;
 		return(
 			<section id="home_section" className="section_wrapper_two blue_bg">
 				{
 					safeRender && 
 					<Fragment>
 						<FirstPost first_post={episodios[0]} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} />
-						<Playlist episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type="episodio"/>
-						<Playlist episodios={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type="glosario" />
+						{
+							episodioSafeRender && <Playlist episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type="episodio"/>
+						}
+						{
+							glosarioSafeRender && <Playlist episodios={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } type="glosario" />
+						}						
 					</Fragment>
 				}
 			</section>

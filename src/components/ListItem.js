@@ -10,7 +10,7 @@ import {isMobileOnly, isTablet} from 'react-device-detect';
 */
 const ListItem = (props)=>{
 	const {post, methods, playerStatus, playThisEpisode, type} = props;
-	const {r_name, r_thumbnails, r_excerpt, r_slug} = post;
+	const {r_name, r_thumbnails, r_slug} = post; //episodios
 	const {square_small, square_mid} = r_thumbnails;
 	let image_src = '';
 
