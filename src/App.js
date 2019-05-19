@@ -49,9 +49,9 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
 
     if(this.state.playThisEpisode !== prevState.playThisEpisode){
-      console.log('update');
-      console.log('-----Current track-----');
-      console.log(`${this.state.playThisEpisode[0].r_id}`);
+      // console.log('update');
+      // console.log('-----Current track-----');
+      // console.log(`${this.state.playThisEpisode[0].r_id}`);
       //asigan el episodio del estado a la variable episode
       let episode = this.state.playThisEpisode[0];
       const {r_meta} = episode;
@@ -168,7 +168,7 @@ class App extends Component {
   }// End playButton
 
   render() {
-    console.log('render');
+    // console.log('render');
     const {episodios, glosario, isOpen, methods, playThisEpisode, playerStatus, showPlayer} = this.state;
     const {handleMenuClick} = methods;
     library.add(fab, faRss);

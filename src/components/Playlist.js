@@ -9,7 +9,7 @@ export default class Playlist extends Component{
 		}else{
 			section_title = type.toUpperCase();
 		}
-		console.log(episodios);
+		// console.log(episodios);
 		return(
 			<Fragment>
 				<ul className="playlist">

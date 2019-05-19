@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Proyecto extends Component{
 	componentDidMount(){
-		console.log('proyecto mount');
+		// console.log('proyecto mount');
 		const {methods} = this.props;
 		const path_name = window.location.pathname;
 		methods.handleMenuClose(path_name);

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Acerca extends Component{
 	componentDidMount(){
-		console.log('acerca mount');
+		// console.log('acerca mount');
 		const {methods} = this.props;
 		const path_name = window.location.pathname;
 		methods.handleMenuClose(path_name);

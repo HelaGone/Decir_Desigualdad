@@ -40,7 +40,7 @@ export default class Player extends Component {
         <div className="track_info">
           {
             song_ready && (
-              <h5>{playthis[0].r_name}</h5>
+              <h3>{playthis[0].r_name}</h3>
             )
           }
         </div>

@@ -14,7 +14,7 @@ const FirtsPost = (props)=>{
 		safe_render = true;
 	}
 
-	console.log( safe_render );
+	// console.log( safe_render );
 
 	return(
 		<section id="first_post_section">

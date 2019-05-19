@@ -5,7 +5,7 @@ import {isMobileOnly, isTablet} from 'react-device-detect';
 export default class Single extends Component{
 
 	componentDidMount(){
-		console.log('single mount');
+		// console.log('single mount');
 		const {methods} = this.props;
 		const path_name = window.location.pathname;
 		methods.handleMenuClose(path_name);
@@ -15,9 +15,9 @@ export default class Single extends Component{
 	render(){
 		const {episodios, methods, playerStatus, playThisEpisode} = this.props;
 		const {slug} = this.props.match.params;
-		console.log(this.props);
+		// console.log(this.props);
 		const episodio = episodios.filter(episodio=>{
-			console.log(`${episodio} - ${slug}`);
+			// console.log(`${episodio} - ${slug}`);
 			return episodio.r_slug === slug
 		});
 		// console.log(episodio);
