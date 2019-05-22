@@ -22,7 +22,7 @@ export default class Header extends Component{
 						<div className="bar2"></div>
 						<div className="bar3"></div>
 					</button>
-					<Link to="/">
+					<Link to="/decirdesigualdades/">
 						<div className="logo_nofm"></div>
 					</Link>
 				</header>

@@ -39,8 +39,8 @@ const FirtsPost = (props)=>{
 							<img src={foncaLogo} alt="Logotipo FONCA"/>
 						</figure>
 						<p className="excerpt">{first_post.r_excerpt}</p>
-						<Link to={`/episodio/${first_post.r_slug}`}>Acerca de este episodio</Link>
-						<Link to="/proyecto/">¿Cómo hicimos este proyecto?</Link>
+						<Link to={`/decirdesigualdades/episodio/${first_post.r_slug}`}>Acerca de este episodio</Link>
+						<Link to="/decirdesigualdades/proyecto/">¿Cómo hicimos este proyecto?</Link>
 
 						<ul className="options_list">
 							{/*<li className="options_item">
