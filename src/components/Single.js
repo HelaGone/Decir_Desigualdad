@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import PlayButton from '../parts/PlayButton';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { FacebookIcon, FacebookShareButton, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon,} from 'react-share';
 import {isMobileOnly, isTablet} from 'react-device-detect';
 export default class Single extends Component{
@@ -10,6 +11,12 @@ export default class Single extends Component{
 		const path_name = window.location.pathname;
 		methods.handleMenuClose(path_name);
 		window.scrollTo(0,0);
+	}
+
+	decodeHTML = (html) =>{
+		var txt = document.createElement('textarea');
+		txt.innerHTML = html;
+		return txt.value;
 	}
 
 	render(){
@@ -24,12 +31,17 @@ export default class Single extends Component{
 		let safe_render = false;
 		const path_name = `${window.location.pathname}/${slug}`
 		let image_src = '';
+		let post_content = '';
+		let arrUsers = [];
 
 		// console.log(episodios);
 		// console.log(episodio);
 
 		if(episodio.length>0){
 			safe_render = true;
+			post_content =  this.decodeHTML(episodio[0].r_content)
+
+			// arrUsers.push(post_content);
 
 			if(isMobileOnly){
 				image_src = episodio[0].r_thumbnails.square_small
@@ -54,7 +66,7 @@ export default class Single extends Component{
 									<h3 className="single_article_title">{episodio[0].r_name}</h3>
 								</div>
 								<div className="single_content">
-									{episodio[0].r_content}
+									{ReactHtmlParser(post_content)}
 								</div>
 								
 								<div className="share_container section_wrapper">

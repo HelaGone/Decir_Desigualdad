@@ -19,7 +19,6 @@ export default class Menu extends Component{
 						<li className="nav_item">
 							<h4><Link to="/decirdesigualdades/contacto">Contacto</Link></h4>
 						</li>
-						{/*<li className="nav_item"><Link to="/escucha">Escúchanos</Link></li>*/}
 						<li className="nav_item">
 							<h4>Síguenos</h4>
 							<ul className="social_list">

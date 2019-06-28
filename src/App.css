@@ -105,6 +105,9 @@ h4, h5, h6{font-weight: 700;}
 #single_section .single_article_container .single_article_caption h3{margin:40px 0 0;}
 #single_section .single_article_container .single_article_image{width:100%;height: auto;}
 #single_section .single_article_container .single_content{font-size: 16pt; line-height: 24pt;padding:0 8px;max-width: 660px;margin:0 auto;}
+#single_section .single_article_container .single_content p a:hover{background-color: #000;}
+#single_section .single_article_container .single_content audio{margin:24px 0;outline: none;}
+#single_section .single_article_container .single_content img{margin:24px 0;width:100%;height: auto;max-width: 660px;object-fit: cover;}
 #single_section .play_section .play_button{background-color:transparent;width:54px;height: 54px;border-radius: 50%; padding:0;margin:16px 0px;}
 #single_section .play_section span{position:relative;bottom:18px;left:8px;}
 
