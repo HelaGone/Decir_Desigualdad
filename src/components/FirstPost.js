@@ -4,21 +4,23 @@ import PlayButton from '../parts/PlayButton';
 import { FacebookIcon, FacebookShareButton, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon,} from 'react-share';
 import {isMobile} from 'react-device-detect';
 import foncaLogo from '../images/cultura_fonca_blanco.png';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const FirtsPost = (props)=>{
 	const {first_post, methods, playerStatus, playThisEpisode} = props;
 	let path_name = '';
 	let safe_render = false;
 	if(first_post){
-		path_name = `${window.location.pathname}/${first_post.r_slug}`
+		path_name = `${window.location.origin}/decirdesigualdades/${first_post.r_slug}`
 		safe_render = true;
 	}
 
-	// console.log( safe_render );
-
+	console.log( path_name );
+	//console.log(first_post.r_slug);
 	return(
 		<section id="first_post_section">
 			{
+
 				safe_render && 
 				<Fragment>
 					<figure className="fig_container first_post">
@@ -38,7 +40,7 @@ const FirtsPost = (props)=>{
 							</figcaption>
 							<img src={foncaLogo} alt="Logotipo FONCA"/>
 						</figure>
-						<p className="excerpt">{first_post.r_excerpt}</p>
+						<p className="excerpt">{ReactHtmlParser(first_post.r_excerpt)}</p>
 						<Link to={`/decirdesigualdades/episodio/${first_post.r_slug}`}>Acerca de este episodio</Link>
 						<Link to="/decirdesigualdades/proyecto/">¿Cómo hicimos este proyecto?</Link>
 
