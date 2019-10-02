@@ -4,18 +4,18 @@ import PlayButton from '../parts/PlayButton';
 import { FacebookIcon, FacebookShareButton, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon,} from 'react-share';
 import {isMobile} from 'react-device-detect';
 import foncaLogo from '../images/cultura_fonca_blanco.png';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 
 const FirtsPost = (props)=>{
 	const {first_post, methods, playerStatus, playThisEpisode} = props;
 	let path_name = '';
 	let safe_render = false;
 	if(first_post){
-		path_name = `${window.location.origin}/decirdesigualdades/${first_post.r_slug}`
+		path_name = `${window.location.origin}/${first_post.r_slug}`
 		safe_render = true;
 	}
 
-	console.log( path_name );
+	// console.log( path_name );
 	//console.log(first_post.r_slug);
 	return(
 		<section id="first_post_section">
@@ -24,7 +24,7 @@ const FirtsPost = (props)=>{
 				safe_render && 
 				<Fragment>
 					<figure className="fig_container first_post">
-						<img src={ (isMobile) ? first_post.r_thumbnails.square_small : first_post.r_thumbnails.large } alt={first_post.r_name} />
+						<img src={ (isMobile) ? first_post.r_thumbnails.square_mid : first_post.r_thumbnails.large } alt={first_post.r_name} />
 						<figcaption className="fig_caption">
 
 							<PlayButton methods={methods} song={first_post.r_id} playerStatus={playerStatus} playThisEpisode={ playThisEpisode } />
@@ -41,8 +41,8 @@ const FirtsPost = (props)=>{
 							<img src={foncaLogo} alt="Logotipo FONCA"/>
 						</figure>
 						<p className="excerpt">{ReactHtmlParser(first_post.r_excerpt)}</p>
-						<Link to={`/decirdesigualdades/episodio/${first_post.r_slug}`}>Acerca de este episodio</Link>
-						<Link to="/decirdesigualdades/proyecto/">¿Cómo hicimos este proyecto?</Link>
+						<Link to={`/episodio/${first_post.r_slug}`}>Acerca de este episodio</Link>
+						<Link to="/proyecto/">¿Cómo hicimos este proyecto?</Link>
 
 						<ul className="options_list">
 							{/*<li className="options_item">

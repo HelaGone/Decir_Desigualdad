@@ -13,7 +13,7 @@ export default class NotFound extends Component{
 		return(
 			<section className="section_wrapper">
 				<h2>Oops! ¿Qué buscas que no encuentras?</h2>
-				<Link to="/decirdesigualdades/">Regersa a tu espacio!</Link>
+				<Link to="/">Regersa a tu espacio!</Link>
 			</section>
 		);
 	}

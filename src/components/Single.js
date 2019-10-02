@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import PlayButton from '../parts/PlayButton';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import { FacebookIcon, FacebookShareButton, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon,} from 'react-share';
 import {isMobileOnly, isTablet} from 'react-device-detect';
 export default class Single extends Component{
@@ -32,7 +32,7 @@ export default class Single extends Component{
 		const path_name = `${window.location.pathname}/${slug}`
 		let image_src = '';
 		let post_content = '';
-		let arrUsers = [];
+		// let arrUsers = [];
 
 		// console.log(episodios);
 		// console.log(episodio);
@@ -44,7 +44,7 @@ export default class Single extends Component{
 			// arrUsers.push(post_content);
 
 			if(isMobileOnly){
-				image_src = episodio[0].r_thumbnails.square_small
+				image_src = episodio[0].r_thumbnails.square_mid
 			}else if(isTablet){
 				image_src = episodio[0].r_thumbnails.square_mid
 			}else{
