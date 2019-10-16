@@ -39,7 +39,7 @@
     "density": "4.0"
    }
   ],
-  "start_url": ".",
+  "start_url": "/decirdesigualdades",
   "display": "standalone",
   "orientation":"portrait",
   "theme_color": "#ff0000",

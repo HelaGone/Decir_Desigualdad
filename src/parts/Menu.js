@@ -8,16 +8,16 @@ export default class Menu extends Component{
 		return(
 			<Fragment>
 				<nav id="main_navigation" className={(isOpen) ? 'show' : ''}>
-					<h4><Link to="/episodios">Episodios</Link></h4>
+					<h4><Link to="/decirdesigualdades/episodios">Episodios</Link></h4>
 					<h4>
-						<Link to="/glosarios">Glosario</Link>
+						<Link to="/decirdesigualdades/glosarios">Glosario</Link>
 					</h4>
 					<ul className="nav_ilst">
 						<li className="nav_item">
-							<h4><Link to="/acerca">Decir Desigualdad</Link></h4>
+							<h4><Link to="/decirdesigualdades/acerca">Decir Desigualdad</Link></h4>
 						</li>
 						<li className="nav_item">
-							<h4><Link to="/contacto">Contacto</Link></h4>
+							<h4><Link to="/decirdesigualdades/contacto">Contacto</Link></h4>
 						</li>
 						<li className="nav_item">
 							<h4>Síguenos</h4>

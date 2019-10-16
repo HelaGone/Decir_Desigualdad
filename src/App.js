@@ -178,15 +178,15 @@ class App extends Component {
       <Fragment>
         <Header isOpen={isOpen} handleMenuClick={handleMenuClick} />
         <Switch>
-        	<Route path="/" exact render={(props)=><Home episodios={episodios} glosario={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
-          <Route path="/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
-          <Route path="/proyecto/" render={(props)=><Proyecto methods={methods} {...props} />}/>
-          <Route path="/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
-        	<Route path="/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} type="episodio" {...props} />}/>
-          <Route path="/episodio/:slug" render={(props)=><Single episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />} />
-          <Route path="/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
-          <Route path="/glosarios/" render={(props)=><Glosario glosario={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} type="glosario" {...props} />}/>
-          <Route path="/glosario/:slug" render={(props)=><Single episodios={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
+        	<Route path="/decirdesigualdades/" exact render={(props)=><Home episodios={episodios} glosario={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
+          <Route path="/decirdesigualdades/acerca/" render={(props)=><Acerca methods={methods} {...props} />}/>
+          <Route path="/decirdesigualdades/proyecto/" render={(props)=><Proyecto methods={methods} {...props} />}/>
+          <Route path="/decirdesigualdades/contacto/" render={(props)=><Contacto methods={methods} {...props} />}/>
+        	<Route path="/decirdesigualdades/episodios/" render={ (props)=><Episodios episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} type="episodio" {...props} />}/>
+          <Route path="/decirdesigualdades/episodio/:slug" render={(props)=><Single episodios={episodios} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />} />
+          <Route path="/decirdesigualdades/escucha/" render={(props)=><Escuchanos methods={methods} {...props} />}/>
+          <Route path="/decirdesigualdades/glosarios/" render={(props)=><Glosario glosario={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} type="glosario" {...props} />}/>
+          <Route path="/decirdesigualdades/glosario/:slug" render={(props)=><Single episodios={glosario} methods={methods} playerStatus={playerStatus} playThisEpisode={playThisEpisode} {...props} />}/>
           <Route render={(props)=><NotFound methods={methods} />} />
         </Switch>
         <Footer episodios={episodios} playthis={playThisEpisode} playerStatus={playerStatus} methods={methods} showPlayer={showPlayer} />
