@@ -17,6 +17,9 @@ export default class Menu extends Component{
 							<h4><Link to="/decirdesigualdades/acerca">Decir Desigualdad</Link></h4>
 						</li>
 						<li className="nav_item">
+							<h4><a href="https://nofm-radio.com/" target="_blank" rel="noopener noreferer">Todo Menos Miedo</a></h4>
+						</li>
+						<li className="nav_item">
 							<h4><Link to="/decirdesigualdades/contacto">Contacto</Link></h4>
 						</li>
 						<li className="nav_item">
